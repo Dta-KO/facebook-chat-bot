@@ -65,31 +65,17 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.post ('/webhook ', function(req, res) {
-var event = req.body.Entry[0].Messaging;
-for (i = 0; i < event.length; i++) {
-var event = event[i];
-if (event.message & & Event.Message.Text) {
-SendMessage(event.sender.id, {text: "Echo:" + event.Message.Text});
-}
-}
-Res.sendstatus(200);
-});
+// Handles messages events
+function handleMessage(sender_psid, received_message) {
 
-function (receiveid, message){request({
-URL:'//graph.facebook.com/v6.0/me/messages',
-qs:{access_token: Process.env.PAGE_ACCESS_TOKEN},
-method: 'POST',
-json: {
-recipient: {ID: Receiveid},
-message: Message,
 }
-}, function(Error, response, trunk) {
-if(error){
-console.Log('Error sending message: ', error);
+
+// Handles messaging_postbacks events
+function handlePostback(sender_psid, received_postback) {
+
 }
-if(answer.Body.Error) {
-console.Log(' ERROR: ', answer.body.Error);
+
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {
+  
 }
-});
-};
